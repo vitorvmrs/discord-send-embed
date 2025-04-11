@@ -29,6 +29,7 @@ runs:
   using: "composite"
   steps:
     - name: Discord Send Embed Message
+      shell: bash
       run: |
         TITLE=$(echo "${{ inputs.title }}" | tr -d '\n')
         DESCRIPTION=$(echo "${{ inputs.description }}" | tr -d '\n')
