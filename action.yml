@@ -32,6 +32,7 @@ runs:
       shell: bash
       run: |
         DESCRIPTION=$(echo "${{ inputs.description }}" | tr -d '\n')
+        FOOTER_TEXT=$(echo "${{ inputs.footer-text }}" | tr -d '\n')
         curl -X POST -H "Content-Type: application/json" \
         -d '{
           "embeds": [
@@ -41,7 +42,7 @@ runs:
               "description": "'"$DESCRIPTION"'",
               "color": '"${{ inputs.color }}"',
               "footer": {
-                "text": "${{ inputs.footer-text }}"
+                "text": "'"$FOOTER_TEXT"'"
               }
             }
           ]
