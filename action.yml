@@ -31,16 +31,15 @@ runs:
     - name: Discord Send Embed Message
       shell: bash
       run: |
-        TITLE=$(echo "${{ inputs.title }}" | tr -d '\n')
         DESCRIPTION=$(echo "${{ inputs.description }}" | tr -d '\n')
         curl -X POST -H "Content-Type: application/json" \
         -d '{
           "embeds": [
             {
-              "title": "'"$TITLE"'",
+              "title": "${{ inputs.title }}",
               "url": "${{ inputs.url }}",
               "description": "'"$DESCRIPTION"'",
-              "color": inputs.color,
+              "color": '"${{ inputs.color }}"',
               "footer": {
                 "text": "${{ inputs.footer-text }}"
               }
